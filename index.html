@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e9f1ed">
+  <title>Birim Fiyat Karşılaştırıcı</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="prices.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Birim Fiyat Karşılaştırıcı</h1>
+      <p>Farklı paketleri kilogram, litre veya adet fiyatına göre karşılaştır.</p>
+    </header>
+    <div class="columns">
+      <section class="panel" aria-labelledby="products-heading">
+        <div class="section-heading">
+          <h2 id="products-heading">Ürünler</h2>
+          <button id="example" type="button" class="outline">Örneği göster</button>
+        </div>
+        <form id="comparison" novalidate>
+          <div id="products"></div>
+          <div class="actions">
+            <button type="button" id="add" class="outline">+ Ürün ekle</button>
+            <button type="submit" class="primary">Karşılaştır</button>
+          </div>
+          <p id="form-error" class="error" role="alert"></p>
+        </form>
+      </section>
+      <section class="panel results" aria-labelledby="results-heading">
+        <h2 id="results-heading">Birim fiyatlar</h2>
+        <p id="result-message" role="status">Karşılaştırmayı görmek için en az iki ürün gir.</p>
+        <ol id="ranking"></ol>
+      </section>
+    </div>
+  </main>
+  <template id="product-template">
+    <fieldset class="product">
+      <legend></legend>
+      <div class="fields">
+        <label class="name">Ürün adı <input name="name" placeholder="İsteğe bağlı" maxlength="60"></label>
+        <label>Toplam fiyat (₺) <input name="price" inputmode="decimal" placeholder="49,90" required></label>
+        <label>Tek paket miktarı <input name="size" inputmode="decimal" placeholder="750" required></label>
+        <label>Birim
+          <select name="unit">
+            <option value="g">Gram</option>
+            <option value="kg">Kilogram</option>
+            <option value="ml">Mililitre</option>
+            <option value="l">Litre</option>
+            <option value="piece">Adet</option>
+          </select>
+        </label>
+        <label>Paket sayısı <input name="packs" inputmode="numeric" value="1"></label>
+      </div>
+      <button type="button" class="remove">Ürünü çıkar</button>
+    </fieldset>
+  </template>
+</body>
+</html>
